@@ -19,7 +19,7 @@ def hello():
     """
     request_data = request.args
     client_name = request_data.get("visitor_name")
-    client_ip = request.remote_addr
+    client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
     client_location = get_client_location(client_ip)
     client_temp = get_client_location_temp(client_location)
 
