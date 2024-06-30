@@ -18,13 +18,9 @@ def hello():
         str: A greeting message to the client.
     """
     request_data = request.args
-    print(request_data)
     client_name = request_data.get("visitor_name")
-    # get client ip address, location and temperature
     client_ip = request.remote_addr
-    print("Getting client location")
     client_location = get_client_location(client_ip)
-    print("Getting client temperature")
     client_temp = get_client_location_temp(client_location)
 
     return jsonify(

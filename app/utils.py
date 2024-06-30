@@ -21,7 +21,6 @@ def get_client_location(ip_address):
         str: The location of the client.
     """
     url = f"https://api.geoapify.com/v1/ipinfo?ip={ip_address}&apiKey={getenv('GEOAPIFI_API_KEY')}"
-    print(url)
 
     headers = CaseInsensitiveDict()
     headers["Accept"] = "application/json"
