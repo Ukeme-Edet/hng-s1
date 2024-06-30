@@ -26,8 +26,8 @@ sudo systemctl enable simple-service
 
 # Configure the nginx server
 sudo cp simple-service /etc/nginx/sites-available/simple-service
-sudo ln -s /etc/nginx/sites-available/simple-service /etc/nginx/sites-enabled/simple-service
+sudo ln -sf /etc/nginx/sites-available/simple-service /etc/nginx/sites-enabled/simple-service
 sudo systemctl restart nginx
 
 # Change the permissions of the home directory
-sudo chmod 755 /home/$USER
+sudo chmod 755 /home/tech-wiz
