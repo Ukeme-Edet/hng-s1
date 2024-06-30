@@ -41,8 +41,7 @@ def get_client_location_temp(city):
     Returns:
         str: The location of the client.
     """
-    url = f"https://api.weatherapi.com/v1/current.json?key={
-        getenv('WEATHER_API_KEY')}&q={city}"
+    url = f"https://api.weatherapi.com/v1/current.json?key={getenv('WEATHER_API_KEY')}&q={city}"
 
     resp = requests.get(url)
     data = resp.json()
