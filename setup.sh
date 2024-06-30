@@ -13,7 +13,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Create the service configuration file
-cp simple-service.service /etc/systemd/system/simple-service.service
+sudo cp simple-service.service /etc/systemd/system/simple-service.service
 
 # Reload the systemd manager configuration
 sudo systemctl daemon-reload
