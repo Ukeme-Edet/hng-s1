@@ -19,7 +19,7 @@ def hello():
         str: A greeting message to the client.
     """
     request_data = request.args
-    client_name = unquote(request_data.get("visitor"))
+    client_name = unquote(request_data.get("visitor_name", "stranger"))
     client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
     client_location = get_client_location(client_ip)
     client_temp = get_client_location_temp(client_location)
