@@ -18,16 +18,12 @@ sudo cp simple-service.service /etc/systemd/system/simple-service.service
 # Reload the systemd manager configuration
 sudo systemctl daemon-reload
 
-# Start the service
-sudo systemctl start simple-service
-
 # Enable the service to start on boot
 sudo systemctl enable simple-service
 
 # Configure the nginx server
-sudo cp simple-service /etc/nginx/sites-available/simple-service
-sudo ln -sf /etc/nginx/sites-available/simple-service /etc/nginx/sites-enabled/simple-service
-sudo systemctl restart nginx
+sudo cp simple-service /etc/nginx/sites-available/simple-service.conf
+sudo ln -sf /etc/nginx/sites-available/simple-service.conf /etc/nginx/sites-enabled/simple-service.conf
 
 # Change the permissions of the home directory
 sudo chmod 755 /home/tech-wiz
