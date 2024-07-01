@@ -19,6 +19,7 @@ def hello():
     """
     request_data = request.args
     client_name = request_data.get("visitor_name", "visitor")
+    client_name = client_name.strip('"')
     client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
     client_location = get_client_location(client_ip)
     client_temp = get_client_location_temp(client_location)
@@ -27,8 +28,6 @@ def hello():
         {
             "client_ip": client_ip,
             "location": client_location,
-            "greeting": f"Hello, "
-            + client_name
-            + f"!, the temperature is {client_temp} degrees celsius in {client_location}",
+            "greeting": f"Hello, {client_name}!, the temperature is {client_temp} degrees celsius in {client_location}",
         }
     )
