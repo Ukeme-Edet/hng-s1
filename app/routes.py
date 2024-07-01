@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+"""
+This module contains the routes for the Flask application.
+
+It defines a Blueprint named 'api' that handles API routes.
+"""
 from flask import Blueprint, jsonify, request
 from dotenv import load_dotenv
 from app.utils import get_client_location, get_client_location_temp
@@ -14,8 +19,12 @@ def hello():
     """
     This route returns a greeting message to the client.
 
+    It retrieves the client's name from the request arguments and the client's IP address from the request headers.
+    It then uses the client's IP address to determine the client's location and fetches the temperature at that location.
+    Finally, it returns a JSON response containing the client's IP address, location, and a greeting message.
+
     Returns:
-        str: A greeting message to the client.
+        dict: A JSON response containing the client's IP address, location, and greeting message.
     """
     request_data = request.args
     client_name = request_data.get("visitor_name", "visitor")
