@@ -2,6 +2,7 @@
 from flask import Blueprint, jsonify, request
 from dotenv import load_dotenv
 from app.utils import get_client_location, get_client_location_temp
+from urllib.parse import unquote
 
 # Force the reload of the .env file
 load_dotenv(override=True)
@@ -18,7 +19,7 @@ def hello():
         str: A greeting message to the client.
     """
     request_data = request.args
-    client_name = str(request_data.get("visitor_name"))
+    client_name = unquote(request_data.get("visitor"))
     client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
     client_location = get_client_location(client_ip)
     client_temp = get_client_location_temp(client_location)
