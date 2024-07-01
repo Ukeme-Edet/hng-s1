@@ -11,4 +11,5 @@ fi
 sudo systemctl restart nginx
 
 # Start the service
+sudo systemctl stop simple-service
 sudo systemctl start simple-service
