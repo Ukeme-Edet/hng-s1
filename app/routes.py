@@ -6,7 +6,7 @@ It defines a Blueprint named 'api' that handles API routes.
 """
 from flask import Blueprint, jsonify, request
 from dotenv import load_dotenv
-from app.utils import get_client_location, get_client_location_temp
+from app.utils import get_client_data
 
 # Force the reload of the .env file
 load_dotenv(override=True)
@@ -30,13 +30,12 @@ def hello():
     client_name = request_data.get("visitor_name", "visitor")
     client_name = client_name.strip('"')
     client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
-    client_location = get_client_location(client_ip)
-    client_temp = get_client_location_temp(client_location)
+    client_data = get_client_data(client_ip)
 
     return jsonify(
         {
             "client_ip": client_ip,
-            "location": client_location,
-            "greeting": f"Hello, {client_name}!, the temperature is {client_temp} degrees celsius in {client_location}",
+            "location": client_data.get("location"),
+            "greeting": f"Hello, {client_name}!, the temperature is {client_data.get("temp")} degrees celsius in {client_data.get('location')}.",
         }
     )
