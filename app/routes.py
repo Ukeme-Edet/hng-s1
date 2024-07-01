@@ -27,6 +27,6 @@ def hello():
         {
             "client_ip": client_ip,
             "location": client_location,
-            "greeting": f"Hello, {client_name}!, the temperature in {client_location} is {client_temp} degrees celsius in {client_location}",
+            "greeting": f"Hello, {client_name}!, the temperature is {client_temp} degrees celsius in {client_location}",
         }
     )
